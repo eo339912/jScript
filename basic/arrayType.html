@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arrayType</title>
+    <style>
+        table tr td,
+        table tr th {
+            padding: 5px 10px
+        }
+    </style>
+</head>
+
+<body>
+    <p id="show"></p>
+    <p id="show_1"></p>
+    <p id="show1"></p>
+    <p id="show2"></p>
+    <button onclick="createTable()">createTable</button>
+    <script>
+        document.getElementById("show1").innerHTML = "Hello"
+        console.log(document.getElementById("show2"))
+
+        function createTable() {
+            console.log(document.getElementById("show"));
+
+
+            var friend1 = {
+                firstName: "gildong",
+                lastName: "Hong",
+                age: 16
+            }
+
+            var friend2 = {
+                firstName: "gil",
+                lastName: "Hong",
+                age: 15
+            }
+
+            var friend3 = {
+                firstName: "dong",
+                lastName: "Han",
+                age: 14
+            }
+
+            var friends = [friend1, friend2, friend3];
+
+            for (obj of friends) {
+                console.log(obj);
+            }
+
+            for (obj of friends) {
+                console.log(obj.firstName + " " + obj.lastName);
+            }
+
+            for (obj of friends) {
+                console.log(obj["firstName"] + " " + obj["lastName"]);
+            }
+
+            for (obj of friends) {
+                for (field in obj) {
+                    console.log("obj[field] : " + obj[field]);
+                }
+            }
+
+            for (field in friends) {
+                console.log(friends[field]);
+            }
+
+            var $tags = "<ul>";
+            for (obj of friends) {
+                $tags += "<li>";
+                for (field in obj) {
+                    $tags += " " + obj[field]
+                }
+                $tags += "</li>";
+            }
+            $tags += "</ul>";
+            console.log($tags);
+            document.getElementById("show").innerHTML = $tags
+
+            var $tags_1 = "<table style='border-collapse: collapse;'>";
+            //thead
+            $tags_1 += "<tr>";
+            for (field in obj) {
+                $tags_1 += "<th style='border:1px solid #333;'>" + field + "</th>"
+            }
+            $tags_1 += "</tr>";
+
+            //tbody
+            for (obj of friends) {
+                $tags_1 += "<tr>";
+
+                for (field in obj) {
+                    $tags_1 += "<td style='border:1px solid #333;'>" + obj[field] + "</td>"
+                }
+                $tags_1 += "</tr>";
+            }
+            $tags_1 += "</table>";
+            console.log($tags_1);
+            document.getElementById("show_1").innerHTML = $tags_1
+
+        }
+    </script>
+</body>
+
+</html>

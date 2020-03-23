@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>string</title>
+</head>
+<body>
+    <script>
+        var str = "please locate where 'locate' occurs";
+        str.length;
+        
+        var pos;
+
+        pos = str.indexOf('locate');
+        console.log("locate의 위치 : " + pos);
+
+        pos = str.indexOf('loce');
+        console.log("없으면 -1을 반환한다 : " + pos);
+
+        pos = str.lastIndexOf('locate');
+        console.log("locate의 위치(뒤에서부터) : " + pos);
+
+        //slice, substring, substr, toUpper, toLowerCase, concat
+        console.log("slice(7, 13) 7부터 13까지 : " + str.slice(7, 13));
+        console.log("slice(7) 7부터 끝까지 : " + str.slice(7));
+        console.log("substring(7, 13) 7부터 13까지 : " + str.substring(7, 13));
+        console.log("substr(7, 6) 7부터 6자리 : " + str.substr(7, 6));
+        console.log("substr(7, 6).toUpperCase() 7부터 6자리 대문자 : " + str.substr(7, 6).toUpperCase()); 
+    </script>
+</body>
+</html>

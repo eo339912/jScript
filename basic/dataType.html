@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dataType</title>
+</head>
+<body>
+    <script>
+        var length;
+        var t = false;
+        console.log(typeof t);
+
+        //인스턴스 선언
+        var friend = {
+            firstName: "gildong",
+            lastName: "Hong",
+            age : 16,
+            getFullName: function(){
+                return this.firstName + "," + this.lastName;
+            }
+        }
+
+        for(field in friend){
+            console.log("field in : " + field)
+        }
+        console.log("object of : " + typeof friend)
+       
+        for(field in friend){
+            console.log(field + ", " + friend[field]);
+        }
+
+        console.log(friend.firstName + "," + friend.lastName);
+        console.log(friend["firstName"] + "," + friend["lastName"]);
+        console.log("getFullName : " + friend.getFullName());
+
+        function getName(){
+            return "LeeJowon";
+        }
+
+        console.log(getName())
+
+        function sum(a, b){
+            return a+b;
+        }
+
+        console.log(sum(10, 12))
+        
+        var numAry = [1, 2, "String", 4, 5];
+        var strAry = ["Hello", "nice", "good"];
+        
+        for(var i=0; i<strAry.length; i++){
+            console.log(strAry[i])
+        }
+
+        
+
+    </script>
+</body>
+</html>

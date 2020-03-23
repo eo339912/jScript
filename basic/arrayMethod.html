@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arrayMethod</title>
+</head>
+<body>
+    <p id="show"></p>
+    <script>
+        var fruits = ["Banana", "Orange", "Apple", "Mango"];
+        document.getElementById("show").innerHTML = fruits.join("-");//배열을 문자열로 바꿔줌
+
+        //pop, push, shift, unshift
+        fruits.push("Kiwi");//뒤에 추가
+        fruits.unshift("Grape");//앞에 추가
+        document.getElementById("show").innerHTML = fruits.join("-");
+
+        fruits.pop(); //뒤에 있는 걸 빼줌
+        fruits.shift(); //앞에 있는 걸 빼줌
+        document.getElementById("show").innerHTML = fruits.join("-")
+
+        fruits[4] = "add";
+        fruits[fruits.length] = "Melon";
+        document.getElementById("show").innerHTML = fruits.join("-")
+
+        var newFruits = ["Banana", "Orange", "Apple", "Mango"];
+        newFruits.sort();
+        newFruits.reverse();
+        console.log(newFruits);
+        document.write(newFruits);
+
+        document.write("<br>");
+
+        var numbers = [1, 22, 10, 100, 45];
+        numbers.sort(); 
+        document.write(numbers); //1,10,100,22,45
+        
+        document.write("<br>");
+
+        var numbers = [1, 22, 10, 100, 45];
+        numbers.sort(
+            function(a, b){
+                return a - b; //양이 나오면 그대로,, 음이나오면 역순으로 
+            }
+        ); 
+        document.write(numbers); //1,10,100,22,45
+
+        document.write("<br>");
+
+        var persons = [
+            {name : "Hong", age : 10}, {name : "Pack", age : 50},{name : "Pack", age : 40},  {name : "Choi", age : 30}
+        ]
+        persons.sort(
+            function(a, b){
+                if(a.name > b.name){
+                    return 1;
+                }else if(a.name < b.name){
+                    return -1;
+                }else {
+                    return a.age - b.age;
+                }
+            }
+        );
+        console.log(persons);
+        
+        persons.sort(callback);
+        function callback(a, b){
+            if(a.name > b.name){
+                    return 1;
+                }else if(a.name < b.name){
+                    return -1;
+                }else {
+                    return a.age - b.age;
+                }
+        }
+    </script>
+</body>
+</html>
