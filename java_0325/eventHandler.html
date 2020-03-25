@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eventHandler</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table tr td, tr th {
+            border: 1px solid #444;
+            padding: 5px 10px
+        }
+    </style>
+</head>
+<body>
+    empId : <input type="text" name="" id="empid" value="add"><br>
+    name : <input type="text" name="" id="name" value="add"><br>
+    phone : <input type="text" name="" id="phone" value="add">
+    <br><input type="submit" value="Add in" id="addbtn">
+
+    <table id="tbl">
+        <tr>
+            <th>empId</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Delete</th>
+        </tr>
+    </table>
+    <script>
+        var datas = [
+            {empId:101, name: "scott", phone:"1234"},
+            {empId:102, name: "seongwoo", phone:"2222"},
+            {empId:103, name: "junwon", phone:"3333"},
+            {empId:104, name: "jaeaon", phone:"4444"},
+            {empId:105, name: "kyurim", phone:"5555"}
+        ]
+        var tbl = document.getElementById("tbl")
+        var $tr, $td, $text;
+        var $title = ["empId", "name", "phone"]
+        datas.forEach(function(obj, idx){
+            $tr = document.createElement("tr");
+            $tr.setAttribute("id", obj.empId);
+            $tr.addEventListener("click", clickFnc);
+            $tr.addEventListener("mouseover", mOverFnc);
+            $tr.addEventListener("mouseout", mOutFnc);
+            
+            for(field of $title){
+                $text = document.createTextNode(obj[field]);
+                $td = document.createElement("td");
+                $td.appendChild($text);
+                $tr.appendChild($td);
+            }
+            //button태그 생성
+            $text = document.createTextNode("Del");
+            var $btn = document.createElement("button");
+            $btn.appendChild($text);
+            
+            $btn.onclick = delFunc;
+            
+            $td = document.createElement("td");
+            $td.appendChild($btn);
+            $tr.appendChild($td);
+
+            tbl.appendChild($tr);
+        });
+
+        function delFunc() {
+            console.log(this.parentNode.parentNode);
+            this.parentNode.parentNode.remove();
+        }
+
+        function clickFnc(){
+            console.log(this.childNodes[0].childNodes[0].nodeValue);
+            var artMsg = "id : " + this.childNodes[0].childNodes[0].nodeValue
+                        +"\nname : " +  this.childNodes[1].childNodes[0].nodeValue
+                        +"\nphone : " + this.childNodes[2].childNodes[0].nodeValue
+
+                        alert(artMsg);
+        }
+
+        function mOverFnc(){
+           this.style.background = "yellow";
+        }
+
+        function mOutFnc(){
+            this.style.background = "";
+        }
+
+        var addBtn = document.getElementById("addbtn");
+        addBtn.addEventListener("click", addTr)
+
+        var tbl = document.getElementById('tbl');
+        function addTr(){
+            var $empId = document.getElementById('empid').value;
+            var $name = document.getElementById('name').value;
+            var $phone = document.getElementById('phone').value;
+            console.log($empId);
+
+            var $tr, $td, $text;
+            $tr = document.createElement('tr');
+            
+            $td = document.createElement('td');
+            $text = document.createTextNode($empId);
+            $td.appendChild($text);
+            $tr.appendChild($td);
+
+            $td = document.createElement('td');
+            $text = document.createTextNode($name);
+            $td.appendChild($text);
+            $tr.appendChild($td);
+
+            $td = document.createElement('td');
+            $text = document.createTextNode($phone);
+            $td.appendChild($text);
+            $tr.appendChild($td);
+
+            
+            $td = document.createElement('td');
+            $text = document.createTextNode('Del');
+            var $btn = document.createElement("button");
+            $btn.appendChild($text);
+            $td.appendChild($btn);
+            $btn.onclick = delFunc;
+            $tr.appendChild($td);
+
+            tbl.appendChild($tr);
+
+            function mOverFnc(){
+           this.style.background = "yellow";
+              }
+
+             function mOutFnc(){
+            this.style.background = "";
+        }
+        }
+
+    </script>
+</body>
+</html>

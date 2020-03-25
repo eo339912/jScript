@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table tr td {
+            border: 1px solid #444;
+            padding: 5px 10px
+        }
+    </style>
+</head>
+<body>
+    <table id="show"></table>
+    <script>
+        var days = ["일", "월", "화", "수", "목", "금", "토",];
+        
+        var $text, $td, $tr;
+        $td = document.createElement("td");
+        $tr = document.createElement("tr");   
+        
+        var $tags = "<tr>";
+        days.forEach(function(a, b){
+            for(fName in a){
+                $tags += "<td>" + a[fName] + "</td>"
+            }
+        });
+        $tags += "</tr>";
+ 
+        document.getElementById("show").innerHTML = $tags
+        
+        var $td2 = document.getElementsByTagName("td");
+        days.forEach(function(a, b){
+            if(b == 0){
+                $td2[b].style.background = "red";
+                $td2[b].style.color = "#fff";
+            }
+
+            if(b == 6){
+                $td2[b].style.background = "blue";
+                $td2[b].style.color = "#fff";
+            }
+        });
+        
+    </script>
+</body>
+</html>

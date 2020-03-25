@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example</title>
+</head>
+<body>
+    <!-- <button id="btn" onclick="btn()"> Click</button> -->
+
+    <table id="tb1" border=1>
+        <tr>
+            <td>name</td>
+            <td>phone</td>
+            <td>Age</td>
+        </tr>
+
+
+    </table>
+    <script>
+        var addrList = '[{"name":"Hong", "phone":"1212-1212", "age":"12"},{"name":"Hong", "phone":"1212-1212", "age":"12"},{"name":"Hong", "phone":"1212-1212", "age":"12"}]'
+        console.log(JSON.parse(addrList));
+        console.log(JSON.stringify(JSON.parse(addrList)));
+    </script>
+</body>
+</html>

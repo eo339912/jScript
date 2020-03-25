@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table tr td {
+            border: 1px solid #444;
+            padding: 5px 10px
+        }
+    </style>
+</head>
+
+<body>
+    <table id="show"></table>
+    <script>
+        var days = ["일", "월", "화", "수", "목", "금", "토"];
+        var $tr, $td, $text;
+        
+        $tr = document.createElement("tr");
+        days.forEach(function(a ,b){
+            $td = document.createElement("td");
+            $text = document.createTextNode(a);
+            $td.appendChild($text);
+            $tr.appendChild($td);
+
+            if(b == 0){
+                $td.style.backgroundColor = "red";
+                $td.style.color = "#fff";
+            }
+
+            if(b == 6){
+                $td.style.backgroundColor = "blue";
+                $td.style.color = "#fff";
+            }
+        })
+        document.getElementById("show").appendChild($tr);
+
+        //총 31
+        var totalDay = 31;
+        var $tr = document.createElement("tr");
+        for(var i = 1; i <= totalDay; i++){
+                       
+            var $td = document.createElement("td");
+            var $text = document.createTextNode(i);
+            $td.appendChild($text);
+            $tr.appendChild($td);
+            
+            if(i%7 == 0){
+                document.getElementById("show").appendChild($tr);
+                var $tr = document.createElement("tr");
+                
+            }
+
+            if (i % 7 == 1) {
+                $td.style.background = "red";
+                $td.style.color = "white";
+            }
+            if (i % 7 == 0) {
+                $td.style.background = "blue";
+                $td.style.color = "white";
+            }
+            
+            
+        }
+
+        document.getElementById("show").appendChild($tr);
+       
+
+        
+
+    </script>
+</body>
+</html>

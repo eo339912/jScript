@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table tr td {
+            border: 1px solid #444;
+            padding: 5px 10px
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="year">
+    <input type="text" id="month">
+    <button id="btn">createCalender</button>
+
+    <div id="show"></div>
+    <script>
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            var year = document.getElementById("year").value;
+            var month = document.getElementById("month").value;
+            creatCal(year, month);
+
+        }
+        
+        function creatCal(y, m) {
+            //화면 clear
+            var tbl = document.getElementsByTagName("table");
+            if(tbl && tbl.length > 0){
+                tbl[0].remove();
+            }
+            
+            var days = ["일", "월", "화", "수", "목", "금", "토"];
+            var $table, $tr, $td, $text
+            $table = document.createElement("table");
+            $tr = document.createElement("tr");
+            days.forEach(function (a, b) {
+                $td = document.createElement("td");
+                if (b == 0) {
+                    $td.style.background = "red";
+                    $td.style.color = "white";
+                }
+                if (b == 6) {
+                    $td.style.background = "blue";
+                    $td.style.color = "white";
+                }
+                $text = document.createTextNode(a);
+
+                $td.appendChild($text);
+                $tr.appendChild($td)
+            });
+            $table.appendChild($tr)
+
+            document.body.appendChild($table);
+
+            //31일까지 반복되도록 (7일단위로)
+            var dday = new Date(y, m, 0);
+            console.log(m + "월의 마지막 날 " + dday.getDate());
+            var tday = new Date(y, m, -1, 1);
+            var nullDay = tday.getDay(); //일0, 월1, 화2...
+            $tr = document.createElement("tr");
+            for(var i = 0; i < nullDay; i++){
+                $td = document.createElement("td");
+                $text = document.createTextNode("");
+
+                $td.appendChild($text);
+                $tr.appendChild($td);
+
+            }
+
+            
+            for (var i = 1; i <= dday.getDate(); i++) {
+
+                $td = document.createElement("td");
+                $text = document.createTextNode(i)
+
+                $td.appendChild($text);
+                $tr.appendChild($td);
+
+                if ((i+nullDay) % 7 == 0) {
+                    $table.appendChild($tr)
+                    $tr = document.createElement("tr");
+
+                }
+
+
+                if ((i+nullDay) % 7 == 1) {
+                    $td.style.background = "red";
+                    $td.style.color = "white";
+                }
+                if ((i+nullDay) % 7 == 0) {
+                    $td.style.background = "blue";
+                    $td.style.color = "white";
+                }
+
+
+            }
+            $table.appendChild($tr)
+            document.getElementById("show").appendChild($table);
+            
+        }
+    </script>
+
+</body>
+
+</html>

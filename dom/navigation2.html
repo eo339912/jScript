@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navigation</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        #tb1 tr td {
+            border: 1px solid #444;
+            padding: 5px 10px
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="firstName" value="">
+    <input type="text" name="lastName" id="lastName" value="">
+    <input type="text" name="age" id="age" value="">
+
+    <button id="btn" onclick="">Click</button>
+
+    <table id="tb1">
+        <thead>
+            <tr>
+                <td>FirstName</td>
+                <td>LastName</td>
+                <td>Age</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>JI WON</td>
+                <td>LEE</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>jun</td>
+                <td>won</td>
+                <td>14</td>
+            </tr>
+            <tr>
+                <td>hea</td>
+                <td>won</td>
+                <td>18</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var trs = document.querySelectorAll("#tb1 tr");
+        console.log(trs);
+        
+        trs.onmouseover = function(){
+            this.style.color = "red";
+        }
+
+        trs.forEach(function(a, b){
+            console.log(a, b);
+            a.setAttribute('style', 'background:#eee');
+
+            a.onmouseover = function(){
+                this.style.color = "red";
+            }
+
+            a.onmouseout = function(){
+                this.style.color = "";
+            }
+
+            
+        })
+    </script>
+
+</body>
+
+</html>

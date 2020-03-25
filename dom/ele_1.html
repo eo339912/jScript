@@ -1,0 +1,57 @@
+<body>
+    <button id="btn" onclick="btn()"> Click</button>
+
+    <table id="tb1" border=1>
+        <tr>
+            <td>name</td>
+            <td>phone</td>
+            <td>Age</td>
+        </tr>
+
+        <ul>
+            <li>coffee</li>
+            <li>dd</li>
+            <li>sdfsf
+                <ul>
+                    <li>ddfsf</li>
+                    <li>sdf</li>
+                </ul>
+            </li>
+        </ul>
+
+
+    </table>
+
+    <script>
+        var $titles = ["name", "phone", "age"];
+        var addList = [
+            { name: "Hong", phone: "1234-1234", age: 26 },
+            { name: "seo", phone: "1224-2234", age: 26 },
+            { name: "yu", phone: "1234-1234", age: 26 },
+            { name: "Hwang", phone: "1234-1234", age: 26 }
+        ]
+
+        function btn() {
+
+            var tb1 = document.getElementById("tb1");
+            var $text, $td, $tr;
+            addList.forEach(function (o){
+                $tr = document.createElement("tr");
+                for(f of $titles) {
+                    $text = document.createTextNode(o[f]);
+                    $td = document.createElement("td");
+                    $td.appendChild($text);
+                    $tr.appendChild($td);
+
+                }
+                tb1.appendChild($tr);
+            })
+
+
+        }
+
+    </script>
+
+</body>
+
+</html>

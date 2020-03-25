@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navigation</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        #tb1 tr td {
+            border: 1px solid #444;
+            padding: 5px 10px
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="firstName" value="">
+    <input type="text" name="lastName" id="lastName" value="">
+    <input type="text" name="age" id="age" value="">
+
+    <button id="btn" onclick="translateBtn()">Click</button>
+
+    <table id="tb1">
+        <thead>
+            <tr>
+                <td>FirstName</td>
+                <td>LastName</td>
+                <td>Age</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>JI WON</td>
+                <td>LEE</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>jun</td>
+                <td>won</td>
+                <td>14</td>
+            </tr>
+            <tr>
+                <td>hea<p>name</p></td>
+                <td>won</td>
+                <td>18</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var tds = document.getElementsByTagName("td");
+        console.log(tds[9].childNodes[1].childNodes[0].nodeValue);
+
+        function translateBtn(){
+            var na = document.getElementById("firstName").value;
+            tds[9].childNodes[1].childNodes[0].nodeValue = na;
+        }
+    </script>
+
+</body>
+
+</html>
